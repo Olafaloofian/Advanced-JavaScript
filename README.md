@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ADVANCED JAVASCRIPT
 
-## Available Scripts
+- Before we really get going here, I want to clarify: all the concepts we are covering today are purely JavaScript. We will be working within the React framework since it's what everyone is most used to at this point, but everything we are about to learn can and should be used outside of React whenever you need to (like on your Node server).
 
-In the project directory, you can run:
+### PROMISES!!
 
-### `npm start`
+- promise : noun : Assurance that one will do something or that a particular thing will happen.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Computers can make promises, just like humans can. Unfortunately, also like people, sometimes promises aren't kept. How do we handle this unpredictability?
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- WITH JAVASCRIPT PROMISES!
 
-### `npm test`
+- You have been dealing with promises in your code for a while now, but today we are going to go over what exactly a JavaScript Promise is, why it's necessary, and how to make our own.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Does anyone know the three states of a Promise?
+1 Pending
+2 Fulfilled
+3 Rejected
 
-### `npm run build`
+- During each of these three states, the result of the Promise is (respectively)
+1 Undefined
+2 Value Object
+3 Error Object
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- When a promise reaches either the Fulfilled or Rejected state, that promise is said to be 'settled'
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Some important things to remember:
+* A promise can only be resolved or rejected once
+* Callbacks will never be called before the completion of the current run of the JavaScript event loop (more on this later).
+* Callbacks added with then() even after the success or failure of the asynchronous operation, will be called, as above.
+* Multiple callbacks may be added by calling then() several times. Each callback is executed one after another, in the order in which they were inserted
+* Use promises whenever you are using async or blocking code.
+* resolve maps to then and reject maps to catch for all practical purposes.
+* Make sure to write both .catch and .then methods for all the promises.
+* If something needs to be done in both the cases use .finally
+* We only get one shot at mutating each promise.
+* We can add multiple handlers to a single promise.
+* The return type of all the methods in Promise object whether they are static methods or prototype methods is again a Promise
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- All right, all right. Enough talk. Let's go check out some code!
+=> Promises component #1
 
-### `npm run eject`
+### Asynchronocity
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- JavaScript itself is a single-threaded synchronous language, but we can manipulate it to behave asynchronously. What does asynchronous mean? It means that some code can be offloaded and executed while other code is running. JavaScript does this by sending certain requests to the browser (which runs on a multi-thread process). The browser runs the code and pushes it onto the call stack queue once it is done. This is a super nice feature to have, if you think about it. Every time you make an API call or other promise, there's not a guarantee it will resolve quickly, or even at all! Asynchronocity allows other code to be run in the meantime and makes out apps feel soooo much faster.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- I know this is a little confusing, so there's a video I want everyone to watch. I could sit up here and try to explain the JavaScript event loop all day, but the guy in this video does an amazing job of explaining what's going on underneath the hood in JavaScript. Watch it until about the 17 and a half minute mark when his presentation explodes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- VIDEO: https://www.youtube.com/watch?v=8aGhZQkoFbQ
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Cool, I hope everything makes a little more sense here. Take a break or keep going?
 
-## Learn More
+- I just wanted to mention, we are going to use a lot of setTimeout()'s for our custom promises, because it is the easiest way to force asynchronosity. That being said, by no means is this the only option for making your own promises. There's lots of opportunity to get creative with custom promises, especially if you are ever setting up a public api or just wanting to improve your internal server requests.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+=> PromiseMethods component #1
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Async/Await
 
-### Code Splitting
+- The keywords async and await are syntactic sugar added in ES6. Syntax sugar means syntax for something that is already able to be written another way, but much cleaner, more concise, or easy to read. In the case of async and await, we can use them to replace the common practice of chaining .then()'s off of promises.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Let's go check out how to do it.
 
-### Analyzing the Bundle Size
+### IFFE
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- IFFE stands for Immediately Invoked Function Expression. They can also be called self-executing anonymous functions. In essence, an IFFE is a function wrapped in the grouping operator (parentheses) and then immediately invoked after grouping. It's a lot of parentheses. If you remember back to the first few weeks of class, we already talked about function expressions, which is when an anonymous function is saved to a variable. We will be using this concept when we make IFFE's - let's go check it out. We aren't going to be using a React component to demo these next couple of concepts because they are pretty core-level JavaScript stuff.
 
-### Making a Progressive Web App
+=> IFFE JavaScriptTools
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### CURRIED FUNCTIONS
 
-### Advanced Configuration
+- Currying is the process of breaking down a function into a series of functions that each take a single argument. Currying takes advantage of JavaScript closures, which is the combination of a function and the lexical environment within which that function was declared. Basically, a closure just refers to the whole function and the specific scope it creates.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Making a function a curried function allows us to more easily reuse abstract functions. You probably won't have to deal with this much unless you get really involved in functional programming, but it's worth exposing yourself to it now.
 
-### Deployment
+=> CurriedFunctions JavaScriptTools #1
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### CONCLUSION
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Alright guys, that was it for advanced JavaScript today. I hope you all learned something helpful and if you have any questions about any of this content or want to take a deeper look, come ask me! The rest of the class day should be used to pass off your assessments and competencies.
