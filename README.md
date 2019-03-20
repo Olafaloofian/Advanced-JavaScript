@@ -1,6 +1,6 @@
 ## ADVANCED JAVASCRIPT
 
-- Before we really get going here, I want to clarify: all the concepts we are covering today are purely JavaScript. We will be working within the React framework since it's what everyone is most used to at this point, but everything we are about to learn can and should be used outside of React whenever you need to (like on your Node server).
+- Before we really get going here, I want to clarify: all the concepts we are covering today are purely JavaScript. We will be working within the React framework since it's what everyone is most used to at this point, but everything we are about to learn can and should be used outside of React whenever you need to (like on your Node/Express server).
 
 ### PROMISES!!
 
@@ -27,11 +27,11 @@
 - Some important things to remember:
 * A promise can only be resolved or rejected once
 * Callbacks will never be called before the completion of the current run of the JavaScript event loop (more on this later).
-* Callbacks added with then() even after the success or failure of the asynchronous operation, will be called, as above.
+* Callbacks added with .then() even after the success or failure of the asynchronous operation, will be called, as above.
 * Multiple callbacks may be added by calling then() several times. Each callback is executed one after another, in the order in which they were inserted
 * Use promises whenever you are using async or blocking code.
-* resolve maps to then and reject maps to catch for all practical purposes.
-* Make sure to write both .catch and .then methods for all the promises.
+* Resolve maps to then and reject maps to catch for all practical purposes.
+* Make sure to write both .catch and .then methods for all promises.
 * If something needs to be done in both the cases use .finally
 * We only get one shot at mutating each promise.
 * We can add multiple handlers to a single promise.
@@ -60,11 +60,13 @@
 
 - Let's go check out how to do it.
 
-### IFFE
+=> AsyncAwait component #1
 
-- IFFE stands for Immediately Invoked Function Expression. They can also be called self-executing anonymous functions. In essence, an IFFE is a function wrapped in the grouping operator (parentheses) and then immediately invoked after grouping. It's a lot of parentheses. If you remember back to the first few weeks of class, we already talked about function expressions, which is when an anonymous function is saved to a variable. We will be using this concept when we make IFFE's - let's go check it out. We aren't going to be using a React component to demo these next couple of concepts because they are pretty core-level JavaScript stuff.
+### IIFE
 
-=> IFFE JavaScriptTools
+- IIFE stands for Immediately Invoked Function Expression. They can also be called self-executing anonymous functions. In essence, an IIFE is a function wrapped in the grouping operator (parentheses) and then immediately invoked after grouping. It's a lot of parentheses. If you remember back to the first few weeks of class, we already talked about function expressions, which is when an anonymous function is saved to a variable. We will be using this concept when we make IIFE's - let's go check it out. We aren't going to be using a React component to demo these next couple of concepts because they are pretty core-level JavaScript stuff.
+
+=> IIFE JavaScriptTools
 
 ### CURRIED FUNCTIONS
 

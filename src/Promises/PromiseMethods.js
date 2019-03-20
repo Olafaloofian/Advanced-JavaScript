@@ -44,7 +44,7 @@ export default class PromiseMethods extends Component {
 
     // #3 If you come across a situation where you have multiple promises to request and you just want one back as fast as possible, there is a fun little method called Promise.race(). This one is similar to Promise.all() in the sense that it takes an array of promises, but this time it will only return the ONE promise that fulfills the fastest.
     promiseRace = () => {
-        // Get volunteers for the race?
+        // Get 3 volunteers for the race
         const racer1 = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve('person1')

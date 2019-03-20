@@ -8,7 +8,11 @@ class CustomPromises extends React.Component {
     componentDidMount() {
         // #3 Now let's talk a little bit about why Promises are necessary. In what order do you think the two strings below will print to the console? Does anyone know what explains this behavior? Asynchronocity!
         Promise.resolve().then(() =>  console.log('Which one is first?'))
+        // BONUS: Talk about console groups and info
+        console.group('Grouped!!!!')
         console.log('Am I the second console log?')
+        console.info('Info')
+        console.groupEnd()
         // => README ### Asynchronocity
 
         this.makeAPromise()
